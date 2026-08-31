@@ -1,5 +1,4 @@
 image: Ubuntu1804 #образ для сборки
-stack: node 12 #окружение
 branches:
   only: 
     - main #ветка в git
@@ -9,21 +8,16 @@ environment:
     - node_version: "18"
 
 install:
-  # 1. Ставим git (для unrs-resolver postinstall)
-  - sudo apt-get update
-  - sudo apt-get install -y git
+  # 1. Ставим git
+  - sudo apt-get update && sudo apt-get install -y git
 
-  # 2. Ставим nvm и нужную версию Node
+  # 2. Ставим nvm + Node
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm"
-  - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  - nvm install $env:node_version || nvm install 18
+  - export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; nvm install "$env:node_version" || nvm install 18
 
-  # 3. Проверяем, что Node и npm есть
+  # 3. Проверка и установка зависимостей
   - node -v
   - npm -v
-
-  # 4. Устанавливаем зависимости с подробным логом (чтобы увидеть реальную ошибку unrs-resolver)
   - npm ci --verbose
 
 build: off
