@@ -9,12 +9,21 @@ environment:
     - node_version: "18"
 
 install:
-  # Для Linux-раннеров: ставим git через apt
+  # 1. Ставим git (для unrs-resolver postinstall)
   - sudo apt-get update
   - sudo apt-get install -y git
-  # Ставим Node
-  - ps: Install-Product node $env:node_version
-  # Установка зависимостей с подробным логом
+
+  # 2. Ставим nvm и нужную версию Node
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm"
+  - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  - nvm install $env:node_version || nvm install 18
+
+  # 3. Проверяем, что Node и npm есть
+  - node -v
+  - npm -v
+
+  # 4. Устанавливаем зависимости с подробным логом (чтобы увидеть реальную ошибку unrs-resolver)
   - npm ci --verbose
 
 build: off
