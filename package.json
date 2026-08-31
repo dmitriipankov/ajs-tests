@@ -1,0 +1,33 @@
+{
+  "name": "ajs-tests",
+  "version": "1.0.0",
+  "description": "ajs-tests-homework",
+  "homepage": "https://github.com/dmitriipankov/ajs-tests#readme",
+  "bugs": {
+    "url": "https://github.com/dmitriipankov/ajs-tests/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitriipankov/ajs-tests.git"
+  },
+  "license": "ISC",
+  "author": "Dmitrii Pankov",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "jest": "^30.5.0",
+    "jest-babel": "^1.0.1"
+  },
+  "dependencies": {
+    "core-js": "^3.50.0"
+  }
+}
