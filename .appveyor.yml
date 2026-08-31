@@ -4,9 +4,19 @@ branches:
   only: 
     - main #ветка в git
 cache: node_modules #кеширование
-install: 
-  - npm install
+environment:
+  matrix:
+    - node_version: "18"
+
+install:
+  # 1. Явно ставим git — это частая причина падения postinstall скриптов
+  - choco install git -y
+  # 2. Ставим Node нужной версии
+  - ps: Install-Product node $env:node_version
+  # 3. Включаем подробный лог, чтобы видеть реальную ошибку из postinstall.js
   - ps: $env:npm_config_loglevel = "verbose"; npm ci
+
 build: off
+
 test_script:
-  - npm run lint && npm test
+  - npm run test:ci
