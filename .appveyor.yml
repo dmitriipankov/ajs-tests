@@ -6,6 +6,7 @@ branches:
 cache: node_modules #кеширование
 install: 
   - npm install
+  - ps: $env:npm_config_loglevel = "verbose"; npm ci
 build: off
 test_script:
   - npm run lint && npm test
