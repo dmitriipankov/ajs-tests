@@ -29,7 +29,6 @@
     "unrs-resolver": "^1.12.2"
   },
   "dependencies": {
-    "core-js": "^3.50.0",
-    "unrs-resolver": "^1.12.2"
+    "core-js": "^3.50.0"
   }
 }
