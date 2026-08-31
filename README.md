@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/wy3glxn9hry86g0d?svg=true)](https://ci.appveyor.com/project/dmitriipankov/ajs-tests)
+
+
 # Домашнее задание к лекции «Unit-тестирование»
 
 **Важно**: каждая задача выполняется в виде отдельного проекта с собственным GitHub репозиторием.
