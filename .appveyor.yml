@@ -9,12 +9,13 @@ environment:
     - node_version: "18"
 
 install:
-  # 1. Явно ставим git — это частая причина падения postinstall скриптов
-  - choco install git -y
-  # 2. Ставим Node нужной версии
+  # Для Linux-раннеров: ставим git через apt
+  - sudo apt-get update
+  - sudo apt-get install -y git
+  # Ставим Node
   - ps: Install-Product node $env:node_version
-  # 3. Включаем подробный лог, чтобы видеть реальную ошибку из postinstall.js
-  - ps: $env:npm_config_loglevel = "verbose"; npm ci
+  # Установка зависимостей с подробным логом
+  - npm ci --verbose
 
 build: off
 
